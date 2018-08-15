@@ -1,0 +1,30 @@
+create TRIGGER  [dbo].[STOCK_TRIGGER] 
+   ON  [dbo].[ACC011AA]
+  after UPDATE, INSERT, DELETE
+  
+as
+declare  @activity varchar(20);
+if exists(SELECT * from inserted) and exists (SELECT * from deleted)
+
+begin
+    SET @activity = 'UPDATE';
+   
+    UPDATE liveStock SET QTY=(QTY+(select qty*vou_sign from inserted where itemId= inserted.ITEM_ID)-(select qty * vou_sign from deleted where itemId=deleted.ITEM_ID))
+	WHERE itemId in (select item_id from inserted)
+end
+
+If exists (Select * from inserted) and not exists(Select * from deleted)
+
+begin
+    SET @activity = 'INSERT';
+    UPDATE liveStock SET QTY=(QTY+(select qty*vou_sign from inserted where itemId= ITEM_ID))
+	WHERE itemId  in (select item_id from inserted)
+end
+
+If exists(select * from deleted) and not exists(Select * from inserted)
+begin 
+    SET @activity = 'DELETE';
+  
+    UPDATE liveStock SET QTY=(QTY-(select qty*vou_sign from deleted where itemId=ITEM_ID))
+	WHERE itemId in (select item_id from deleted)
+end

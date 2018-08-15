@@ -1,0 +1,7 @@
+INSERT INTO liveStock
+select a3.item_id,sum(qty*vou_sign) stock
+from acc011aa aa,acc011a3 a3
+where  a3.item_id=aa.item_id
+and aa.store_id='01'
+group by a3.item_id
+order by a3.item_id
