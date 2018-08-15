@@ -43,10 +43,10 @@ namespace MyWayAPI.Controllers.api
 
                     //doc_id = _ctx.APM.Where(w => w.QUOT_ID == filter).Select(e => e.DOC_ID).SingleOrDefault();//VouIdsCurrentPeriod[i];
                     qq.Add (from b in _ctx.AQD
-                           where b.DOC_ID == filter
+                           
                            join a in _ctx.Products on b.ITEM_ID equals a.ITEM_ID
                            join c in _ctx.APM on b.DOC_ID equals c.DOC_ID
-
+                            where b.DOC_ID == filter
                            select new Pending
                            {
                                docid = filter,
