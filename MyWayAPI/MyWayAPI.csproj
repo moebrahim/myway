@@ -158,6 +158,7 @@
     <Compile Include="Controllers\api\areaController.cs" />
     <Compile Include="Controllers\api\bonuscalcController.cs" />
     <Compile Include="Controllers\api\invoiceController.cs" />
+    <Compile Include="Controllers\api\invoicesController.cs" />
     <Compile Include="Controllers\api\itemdetailsController.cs" />
     <Compile Include="Controllers\api\memregisterController.cs" />
     <Compile Include="Controllers\api\pendingController.cs" />
@@ -188,9 +189,44 @@
     </Compile>
     <Compile Include="Models\AQ.cs" />
     <Compile Include="Models\AZ1.cs" />
+    <Compile Include="Models\Invoice.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Invoice.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invoice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Invoice.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Invoice.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\InvoiceDTO.cs" />
+    <Compile Include="Models\INVOICE_Result.cs">
+      <DependentUpon>Invoice.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LiveStock.cs" />
-    <Compile Include="Models\Pending.cs" />
+    <Compile Include="Models\PendingStore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PendingStore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PendingStore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PendingStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PendingStore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PendingStore.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PENDING_Result.cs">
+      <DependentUpon>PendingStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Period32C.cs" />
     <Compile Include="Models\treeSp.Context.cs">
       <AutoGen>True</AutoGen>
@@ -252,6 +288,40 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>treeSp.edmx</DependentUpon>
       <LastGenOutput>treeSp.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\PendingStore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PendingStore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PendingStore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PendingStore.edmx</DependentUpon>
+      <LastGenOutput>PendingStore.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PendingStore.edmx.diagram">
+      <DependentUpon>PendingStore.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PendingStore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PendingStore.edmx</DependentUpon>
+      <LastGenOutput>PendingStore.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\Invoice.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Invoice.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Invoice.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Invoice.edmx</DependentUpon>
+      <LastGenOutput>Invoice.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Invoice.edmx.diagram">
+      <DependentUpon>Invoice.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Invoice.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Invoice.edmx</DependentUpon>
+      <LastGenOutput>Invoice.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi.pubxml" />
