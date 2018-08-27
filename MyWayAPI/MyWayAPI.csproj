@@ -228,6 +228,8 @@
       <DependentUpon>PendingStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Period32C.cs" />
+    <Compile Include="Models\PRODUCT.cs" />
+    <Compile Include="Models\Products.cs" />
     <Compile Include="Models\treeSp.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

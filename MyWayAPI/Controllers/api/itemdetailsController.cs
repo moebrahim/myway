@@ -21,13 +21,14 @@ namespace MyWayAPI.Controllers.api
         [HttpGet]
         public IHttpActionResult getitemdetails(string itemID)
         {
-            var x = _ctx.Products.Select(w=> new {w.ITEM_ID, w.VOLUM, w.WEIGHT}).Where(q=>q.ITEM_ID == itemID);
-            return Ok(x);
+
+            return Ok(_ctx.Products.Select(w => new { w.ITEM_ID, w.ANAME, w.PRICE, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW }).Where(q => q.ITEM_ID == itemID));
         }
-       // [HttpGet]
-        //public IHttpActionResult getallproducts()
-        //{
-        //    return Ok(_ctx.Products.Select(w => new { w.ITEM_ID , w.ANAME }));
-        //}
+        [Route("api/allitemdetails")]
+        [HttpGet]
+        public IHttpActionResult getallproducts()
+        {
+            return Ok(_ctx.Products.Select(w => new { w.ITEM_ID, w.ANAME, w.PRICE, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW }));
+        }
     }
 }
