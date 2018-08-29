@@ -102,11 +102,14 @@ namespace MyWayAPI.Controllers.api
             inv.apmaster.LDELIVERY = "0000000000";
             inv.apmaster.AREMARKS = "";
             inv.apmaster.LREMARKS = "";
+            inv.apmaster.IS_TEMPLATE = "0";
+            inv.apmaster.CLOSEDFLAG = "0";
+            inv.apmaster.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
             inv.apmaster.ADD_DATE = inv.apmaster.LAST_DATE = DateTime.Now.ToString("yyy-MM-dd");
             inv.apmaster.SENT = "0";
             inv.apmaster.OWNER = null;
             inv.apmaster.MODULE_ID = "SA";
-            inv.apmaster.HELD = "";
+            inv.apmaster.HELD = "0";
             inv.apmaster.PRJ_ID = null;
             inv.apmaster.COMP_ID = "001";
             inv.apmaster.USER_ID = inv.apmaster.LAST_USER = "006";
