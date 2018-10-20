@@ -85,7 +85,8 @@ namespace MyWayAPI.Controllers.api
 
             newMember.DETAILED = "1";
             newMember.SHIFT_ID = "012";
-            newMember.SERVICE_CENTER = "02";
+            //02
+            newMember.SERVICE_CENTER = "06";
             newMember.JOIN_DATE = DateTime.Now.ToString("yyy-MM-dd");
             newMember.CURRENT_DISTR_TYPE_ID = "00";
             newMember.DIRECTOR_ID = "00000000";

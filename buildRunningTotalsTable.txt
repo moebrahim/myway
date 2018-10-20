@@ -1,0 +1,6 @@
+insert into RunningTotals
+select b.DISTR_ID, sum(a.TOTAL_BV * a.VOU_SIGN) , sum(a.TOTAL_BP * a.VOU_SIGN)
+from ACC01187 a, ACC011AZ1 b, A000032C c
+where a.DISTR_ID = b.DISTR_ID
+and a.PERIOD_NO = (select LAST_OPEN from A000032C where MODULE_ID = 'sa')
+group by b.DISTR_ID

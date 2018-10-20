@@ -161,6 +161,7 @@
     <Compile Include="Controllers\api\invoicesController.cs" />
     <Compile Include="Controllers\api\itemdetailsController.cs" />
     <Compile Include="Controllers\api\memregisterController.cs" />
+    <Compile Include="Controllers\api\orderController.cs" />
     <Compile Include="Controllers\api\pendingController.cs" />
     <Compile Include="Controllers\api\stockController.cs" />
     <Compile Include="Controllers\api\treeController.cs" />
@@ -327,7 +328,6 @@
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi.pubxml" />
-    <None Include="Properties\PublishProfiles\testy-t.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
