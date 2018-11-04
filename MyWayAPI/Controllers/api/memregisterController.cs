@@ -27,7 +27,7 @@ namespace MyWayAPI.Controllers.api
         [HttpGet]
         public IHttpActionResult getmembersbyid(string id)
         {
-            return Ok(_ctx.Member.Select(w => new { w.DISTR_ID, w.ANAME, w.DISTR_IDENT, w.ADDRESS, w.TELEPHONE, w.E_MAIL }).Where(s=>s.DISTR_ID==id));
+            return Ok(_ctx.Member.Select(w => new { w.DISTR_ID, w.ANAME, w.DISTR_IDENT, w.ADDRESS, w.TELEPHONE, w.E_MAIL }).Where(s => s.DISTR_ID == id));
 
         }
         [HttpPut]
@@ -115,15 +115,17 @@ namespace MyWayAPI.Controllers.api
 
             var dupe = _ctx.Member.Select(w => w.DISTR_IDENT).ToList();
 
-            if (dupe.Exists(i => i.Equals(newMember.DISTR_IDENT)))
+            if (dupe.Contains(newMember.DISTR_IDENT))
                 return Content(HttpStatusCode.Conflict, "User Identity Already Exists.");
+
 
             _ctx.Member.Add(newMember);
             _ctx.SaveChanges();
 
 
 
-            return Created(new Uri(Request.RequestUri + "/" + newMember.DISTR_ID), newMember);
+            return Created(new Uri(Request.RequestUri + "/" + newMember.DISTR_ID), new { id = newMember.DISTR_ID });
+
         }
 
         [HttpPost]
@@ -143,6 +145,6 @@ namespace MyWayAPI.Controllers.api
 
             return Ok();
         }
-    
+
     }
 }

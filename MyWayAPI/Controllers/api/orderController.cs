@@ -7,10 +7,10 @@ using System.Web.Http;
 
 namespace MyWayAPI.Controllers.api
 {
-    public class invoiceController : ApiController
+    public class orderController : ApiController
     {
         private readonly DBC _ctx;
-        public invoiceController()
+        public orderController()
         {
             _ctx = new DBC();
         }
@@ -24,24 +24,12 @@ namespace MyWayAPI.Controllers.api
         [HttpPut]
         //amr el bee3 8 fatoora 10
         //06
-        public IHttpActionResult NewOrder (InvoiceDTO inv)
+        public IHttpActionResult NewOrder(InvoiceDTO inv)
         {
-            #region basic init
-            //doing the acc011a9 first
-            string vouIDplus = _ctx.A9M.Where(w => w.VOU_ID.StartsWith("06")).Where(x => x.TRANS_TYPE == "ST_RS_RSO_O").Max(q => q.VOU_ID);
-            string vouSub = vouIDplus.Substring(2, vouIDplus.Length - 2);
-            int vouSubInt = 0;
-            if (int.TryParse(vouSub, out vouSubInt))
-            {
-                vouSubInt++;
-                vouIDplus = vouSubInt.ToString();
-                vouIDplus = vouIDplus.PadLeft(vouSub.Length, '0');
-                vouIDplus = vouIDplus.Insert(0, "06");
-            }
-            #endregion
-            //inv.a9master = new ACC011A9();
-            #region ACC011A9
-            inv.a9master.VOU_ID = vouIDplus;
+            
+            //vou_id
+            string date = DateTime.Now.ToString("HH:mm:ss");
+            inv.a9master.VOU_ID = "06"+inv.a9master.CUS_VEN_ID+date;
             inv.a9master.TRANS_TYPE = "ST_RS_RSO_O";
             inv.a9master.VOU_DATE = inv.a9master.ADD_DATE = inv.a9master.LAST_DATE = DateTime.Now.ToString("yyy-MM-dd");
             //adescr is ""
@@ -59,7 +47,7 @@ namespace MyWayAPI.Controllers.api
             inv.a9master.TOTAL_COST = 0;
             inv.a9master.POSTED = "0";
             inv.a9master.NO_MODIFY = "0";
-            
+
             inv.a9master.SENT = "0";
             inv.a9master.MODULE_ID = "sa";
             inv.a9master.USER_ID = inv.a9master.LAST_USER = "006";
@@ -69,25 +57,13 @@ namespace MyWayAPI.Controllers.api
             inv.a9master.ADD_TIME = DateTime.UtcNow.ToString("HH:mm:ss");//AddHours(1).ToString("HH:mm:ss");//+ DateTime.Parse("01:00:00");//DateTime.Now.ToString("HH:mm:ss");
             inv.a9master.S_SERIAL = "SA0053A2LIZQH00";
             inv.a9master.REC_OWNER = "U";
-            #endregion
+          
 
-            #region basic init 2
-            vouIDplus = _ctx.APM.Where(w => w.DOC_ID.StartsWith("06")).Max(q => q.DOC_ID);
-            vouSub = vouIDplus.Substring(2, vouIDplus.Length - 2);
-            vouSubInt = 0;
-            if (int.TryParse(vouSub, out vouSubInt))
-            {
-                vouSubInt++;
-                vouIDplus = vouSubInt.ToString();
-                vouIDplus = vouIDplus.PadLeft(vouSub.Length, '0');
-                vouIDplus = vouIDplus.Insert(0, "06");
-            }
-            #endregion
 
             #region ACC011AP
             //gross_total & net_total
             //inv.apmaster = new ACC011AP();
-            inv.apmaster.DOC_ID = vouIDplus;
+            inv.apmaster.DOC_ID ="06"+inv.a9master.CUS_VEN_ID+DateTime.Now;
             inv.apmaster.QUOT_ID = inv.a9master.VOU_ID;
             inv.apmaster.DISTR_ID = inv.a9master.CUS_VEN_ID;
             inv.apmaster.DOC_DATE = DateTime.UtcNow.ToString("yyy-MM-dd");
@@ -148,7 +124,7 @@ namespace MyWayAPI.Controllers.api
             //ACC011AA detail = new ACC011AA();
             #endregion
             int row = 0;
-            
+
             #region ACC011AA
             //string aq_doc_id = _ctx.APM.Where(w => w.DOC_ID.StartsWith("06")).Max(q => q.DOC_ID);
             //final
@@ -157,7 +133,7 @@ namespace MyWayAPI.Controllers.api
                 i.TRANS_TYPE = "ST_RS_RSO_O";
                 i.VOU_ID = inv.a9master.VOU_ID;
                 row++;
-                i.COUNTER = row.ToString().PadLeft(4,'0');
+                i.COUNTER = row.ToString().PadLeft(4, '0');
                 i.VOU_DATE = i.ADD_DATE = i.LAST_DATE = DateTime.Now.ToString("yyy-MM-dd");
                 i.STORE_ID = "02";
                 i.BATCH_ID = "";
@@ -234,9 +210,9 @@ namespace MyWayAPI.Controllers.api
             _ctx.APM.Add(inv.apmaster);
             _ctx.A9M.Add(inv.a9master);
             _ctx.SaveChanges();
-            //total price
-            return Created(new Uri(Request.RequestUri + "/" + inv.apmaster.DISTR_ID), new { id = inv.apmaster.DOC_ID, amt = inv.apmaster.NET_TOTAL });
+
+            return Ok(inv.apmaster.DOC_ID);
         }
-    
+
     }
 }

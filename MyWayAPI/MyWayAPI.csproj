@@ -210,6 +210,21 @@
       <DependentUpon>Invoice.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LiveStock.cs" />
+    <Compile Include="Models\NewTree.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewTree.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewTree.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewTree.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewTree.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\PendingStore.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -325,6 +340,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Invoice.edmx</DependentUpon>
       <LastGenOutput>Invoice.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\NewTree.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewTree.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NewTree.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewTree.edmx</DependentUpon>
+      <LastGenOutput>NewTree.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NewTree.edmx.diagram">
+      <DependentUpon>NewTree.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\NewTree.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewTree.edmx</DependentUpon>
+      <LastGenOutput>NewTree.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi.pubxml" />
