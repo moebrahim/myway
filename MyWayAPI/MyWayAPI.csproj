@@ -157,9 +157,11 @@
     <Compile Include="CodeFile1.cs" />
     <Compile Include="Controllers\api\areaController.cs" />
     <Compile Include="Controllers\api\bonuscalcController.cs" />
+    <Compile Include="Controllers\api\distrsummaryController.cs" />
     <Compile Include="Controllers\api\invoiceController.cs" />
     <Compile Include="Controllers\api\invoicesController.cs" />
     <Compile Include="Controllers\api\itemdetailsController.cs" />
+    <Compile Include="Controllers\api\leaderverificationController.cs" />
     <Compile Include="Controllers\api\memregisterController.cs" />
     <Compile Include="Controllers\api\orderController.cs" />
     <Compile Include="Controllers\api\pendingController.cs" />
@@ -192,6 +194,24 @@
     </Compile>
     <Compile Include="Models\AQ.cs" />
     <Compile Include="Models\AZ1.cs" />
+    <Compile Include="Models\distrSummary.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>distrSummary.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\distrSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>distrSummary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\distrSummary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>distrSummary.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\distr_summary_Result.cs">
+      <DependentUpon>distrSummary.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\getmemberID.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -228,6 +248,21 @@
     <Compile Include="Models\InvoiceDTO.cs" />
     <Compile Include="Models\INVOICE_Result.cs">
       <DependentUpon>Invoice.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\leaderVeri.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>leaderVeri.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\leaderVeri.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>leaderVeri.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\leaderVeri.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>leaderVeri.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\LiveStock.cs" />
     <Compile Include="Models\NewTree.Context.cs">
@@ -395,6 +430,40 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>getmemberID.edmx</DependentUpon>
       <LastGenOutput>getmemberID.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\leaderVeri.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>leaderVeri.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\leaderVeri.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>leaderVeri.edmx</DependentUpon>
+      <LastGenOutput>leaderVeri.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\leaderVeri.edmx.diagram">
+      <DependentUpon>leaderVeri.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\leaderVeri.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>leaderVeri.edmx</DependentUpon>
+      <LastGenOutput>leaderVeri.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\distrSummary.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>distrSummary.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\distrSummary.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>distrSummary.edmx</DependentUpon>
+      <LastGenOutput>distrSummary.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\distrSummary.edmx.diagram">
+      <DependentUpon>distrSummary.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\distrSummary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>distrSummary.edmx</DependentUpon>
+      <LastGenOutput>distrSummary.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi.pubxml" />
