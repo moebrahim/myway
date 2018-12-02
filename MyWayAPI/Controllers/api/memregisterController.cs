@@ -27,7 +27,26 @@ namespace MyWayAPI.Controllers.api
         [HttpGet]
         public IHttpActionResult getmembersbyid(string id)
         {
-            return Ok(_ctx.Member.Select(w => new { w.DISTR_ID, w.ANAME, w.DISTR_IDENT, w.ADDRESS, w.TELEPHONE, w.E_MAIL }).Where(s => s.DISTR_ID == id));
+            List<getmemberID_Result> x = new List<getmemberID_Result>();
+            var test = new Entities3();
+            var reslist = test.getmemberID(id).ToList();
+            foreach (var pen in reslist.ToList())
+            {
+                x.Add(
+                    new getmemberID_Result
+                    {
+                        DISTR_ID = pen.DISTR_ID,
+                        ANAME = pen.ANAME,
+                        DISTR_IDENT = pen.DISTR_IDENT,
+                        ADDRESS = pen.ADDRESS,
+                        TELEPHONE = pen.TELEPHONE,
+                        E_MAIL = pen.E_MAIL,
+                        AREA_ID =pen.AREA_ID,
+                        AREA_NAME = pen.AREA_NAME
+                    }
+                    );
+            }
+            return Ok(x);
 
         }
         [HttpPut]

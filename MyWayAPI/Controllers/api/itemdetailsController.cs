@@ -30,5 +30,13 @@ namespace MyWayAPI.Controllers.api
         {
             return Ok(_ctx.Products.Select(w => new { w.ITEM_ID, w.ANAME, w.PRICE, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW }));
         }
+
+        [Route("api/newproducts")]
+        [HttpGet]
+        public IHttpActionResult getallnewproducts()
+        {
+
+            return Ok(_ctx.Products.Select(w => new  { w.ITEM_ID, w.ANAME, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW}).Where(q=>q.NEW == true));
+        }
     }
 }

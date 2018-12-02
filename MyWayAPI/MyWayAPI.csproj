@@ -190,6 +190,24 @@
     </Compile>
     <Compile Include="Models\AQ.cs" />
     <Compile Include="Models\AZ1.cs" />
+    <Compile Include="Models\getmemberID.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>getmemberID.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getmemberID.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>getmemberID.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getmemberID.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>getmemberID.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getmemberID_Result.cs">
+      <DependentUpon>getmemberID.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Invoice.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -357,6 +375,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NewTree.edmx</DependentUpon>
       <LastGenOutput>NewTree.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\getmemberID.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>getmemberID.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\getmemberID.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>getmemberID.edmx</DependentUpon>
+      <LastGenOutput>getmemberID.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\getmemberID.edmx.diagram">
+      <DependentUpon>getmemberID.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\getmemberID.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>getmemberID.edmx</DependentUpon>
+      <LastGenOutput>getmemberID.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi.pubxml" />

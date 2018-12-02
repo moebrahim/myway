@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="getmemberID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="distr" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Model1StoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities3" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="getmemberID" ReturnType="Collection(Model1.getmemberID_Result)">
+            <Parameter Name="distr" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="getmemberID_Result">
+          <Property Type="String" Name="DISTR_ID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ANAME" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DISTR_IDENT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ADDRESS" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TELEPHONE" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="E_MAIL" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AREA_ID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="AREA_NAME" Nullable="true" MaxLength="60" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Entities3" >
+          <FunctionImportMapping FunctionImportName="getmemberID" FunctionName="Model1.Store.getmemberID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.getmemberID_Result">
+                <ScalarProperty Name="DISTR_ID" ColumnName="DISTR_ID" />
+                <ScalarProperty Name="ANAME" ColumnName="ANAME" />
+                <ScalarProperty Name="DISTR_IDENT" ColumnName="DISTR_IDENT" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="E_MAIL" ColumnName="E_MAIL" />
+                <ScalarProperty Name="AREA_ID" ColumnName="AREA_ID" />
+                <ScalarProperty Name="AREA_NAME" ColumnName="AREA_NAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
