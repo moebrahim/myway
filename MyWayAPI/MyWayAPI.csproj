@@ -163,6 +163,7 @@
     <Compile Include="Controllers\api\memregisterController.cs" />
     <Compile Include="Controllers\api\orderController.cs" />
     <Compile Include="Controllers\api\pendingController.cs" />
+    <Compile Include="Controllers\api\shipmentcompaniesController.cs" />
     <Compile Include="Controllers\api\stockController.cs" />
     <Compile Include="Controllers\api\treeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Models\ACC011AP.cs" />
     <Compile Include="Models\ACC011AQ.cs" />
     <Compile Include="Models\ACC011AZ1.cs" />
+    <Compile Include="Models\ACC011DSSC.cs" />
     <Compile Include="Models\AP.cs" />
     <Compile Include="Models\apiReport_Result.cs">
       <DependentUpon>treeSp.tt</DependentUpon>
@@ -264,6 +266,7 @@
     <Compile Include="Models\Period32C.cs" />
     <Compile Include="Models\PRODUCT.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\ShipmentCompany.cs" />
     <Compile Include="Models\treeSp.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

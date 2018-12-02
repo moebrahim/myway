@@ -28,6 +28,7 @@ namespace MyWayAPI
         public DbSet<liveStock> Stock { get; set; }
         public DbSet<ACC011A3> Items { get; set; }
         public DbSet<A000032C> Periods { get; set; }
+        public DbSet<ACC011DSSC> Shipments { get; set; }
 
         public DbSet<PRODUCT> Products { get; set; }
     }

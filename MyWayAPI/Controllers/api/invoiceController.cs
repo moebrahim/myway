@@ -116,6 +116,7 @@ namespace MyWayAPI.Controllers.api
             inv.apmaster.S_AUTO_KEY = 0;
             inv.apmaster.S_SERIAL = "SA0053A2LIZQH00";
             inv.apmaster.DISC_NOTES = "";
+            inv.apmaster.DS_SHIPMENT = "60" + inv.a9master.CUS_VEN_ID;
             #endregion
             #region //stuff to ask about and old code
             //inv.apmaster.DS_SHIPMENT_PLACE = ""; idk 
