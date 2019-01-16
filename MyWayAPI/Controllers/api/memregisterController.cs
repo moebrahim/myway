@@ -192,7 +192,7 @@ namespace MyWayAPI.Controllers.api
                     DOC_ID = vouIDplus,
                     
                     COUNTER = "0001",
-                    ITEM_ID = "99M",
+                    ITEM_ID = "99m",
                     UNIT = "",
                     QTY_REQ = 1,
                     UNIT_PRICE = 30,
@@ -215,7 +215,7 @@ namespace MyWayAPI.Controllers.api
                     USER_ID = "006",
                     LAST_USER = "006",
                     ADD_TIME = DateTime.Now.ToString("HH:mm:ss"),
-                    S_SERIAL = vouIDplus + "99M" + "0001",
+                    S_SERIAL = vouIDplus + "99m" + "0001",
                 }
                 
             };
