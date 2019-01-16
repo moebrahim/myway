@@ -140,7 +140,7 @@ namespace MyWayAPI.Controllers.api
             _ctx.Member.Add(newMember);
             _ctx.SaveChanges();
 
-            string vouIDplus = _ctx.A9M.Where(w => w.VOU_ID.StartsWith("06")).Where(x => x.TRANS_TYPE == "ST_RS_RSO_O").Max(q => q.VOU_ID);
+            string vouIDplus = _ctx.APM.Where(w => w.DOC_ID.StartsWith("06")).Max(q => q.DOC_ID);
             string vouSub = vouIDplus.Substring(2, vouIDplus.Length - 2);
             int vouSubInt = 0;
             if (int.TryParse(vouSub, out vouSubInt))
