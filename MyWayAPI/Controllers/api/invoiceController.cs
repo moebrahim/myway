@@ -72,7 +72,7 @@ namespace MyWayAPI.Controllers.api
             
             inv.a9master.SENT = "0";
             inv.a9master.MODULE_ID = "SA";
-            inv.a9master.USER_ID = inv.a9master.LAST_USER = "006";
+            //inv.a9master.USER_ID = inv.a9master.LAST_USER = "006";
             inv.a9master.COMP_ID = "001";
             inv.a9master.S_AUTO_KEY = 1;
             inv.a9master.V_DISTR_ID = "0000";
@@ -123,7 +123,7 @@ namespace MyWayAPI.Controllers.api
             inv.apmaster.HELD = "0";
             inv.apmaster.PRJ_ID = null;
             inv.apmaster.COMP_ID = "001";
-            inv.apmaster.USER_ID = inv.apmaster.LAST_USER = "006";
+            inv.apmaster.USER_ID = inv.apmaster.LAST_USER = inv.a9master.USER_ID;
             inv.apmaster.S_AUTO_KEY = 0;
             inv.apmaster.S_SERIAL = inv.a9master.CUS_VEN_ID + inv.apmaster.DOC_ID;
             //inv.apmaster.DISC_NOTES = "";
@@ -186,11 +186,10 @@ namespace MyWayAPI.Controllers.api
                 i.DLV_QTY = 0;
                 i.NEW_COST = 0;
                 i.COMP_ID = "001";
-                i.USER_ID = "006";
+                i.USER_ID = i.LAST_USER= inv.apmaster.USER_ID;
                 i.S_AUTO_KEY = 0;
                 i.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
                 i.SENT = "0";
-                i.LAST_USER = "006";
                 i.S_SERIAL = "SA005672TP83L19";
                 i.VOU_SIGN = 0;
                 i.V_DISTR_ID = "0000";
@@ -237,7 +236,7 @@ namespace MyWayAPI.Controllers.api
                 aq.PACK_UNITS = 0;
                 aq.COMP_ID = "001";
                 aq.ADD_DATE = aq.ADD_TIME = DateTime.Now.ToString("yyy-MM-dd");
-                aq.USER_ID = aq.LAST_USER = "006";
+                aq.USER_ID = aq.LAST_USER = inv.apmaster.LAST_USER;
                 aq.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
                 aq.S_SERIAL = inv.apmaster.DOC_ID+ aq.ITEM_ID + aq.COUNTER;
                 //item_bp, item_bv, 

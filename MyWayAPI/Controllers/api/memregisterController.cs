@@ -41,7 +41,7 @@ namespace MyWayAPI.Controllers.api
                         ADDRESS = pen.ADDRESS,
                         TELEPHONE = pen.TELEPHONE,
                         E_MAIL = pen.E_MAIL,
-                        AREA_ID =pen.AREA_ID,
+                        AREA_ID = pen.AREA_ID,
                         AREA_NAME = pen.AREA_NAME
                     }
                     );
@@ -126,7 +126,7 @@ namespace MyWayAPI.Controllers.api
             newMember.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
             //s_serial empty string
             newMember.S_SERIAL = "TEST";
-            newMember.REG_FEES = 10;
+            newMember.REG_FEES = 30;
             newMember.PAID_FEES = 0;
             newMember.FEES_TYPE = "1";
             newMember.YEAR_STATUS = "999999999999";
@@ -135,13 +135,93 @@ namespace MyWayAPI.Controllers.api
             var dupe = _ctx.Member.Select(w => w.DISTR_IDENT).ToList();
 
             if (dupe.Contains(newMember.DISTR_IDENT))
-                return Content(HttpStatusCode.Conflict, "User Identity Already Exists.");
-
+                return Content(HttpStatusCode.Conflict, "User Identity Already Exists. Please try again.");
 
             _ctx.Member.Add(newMember);
             _ctx.SaveChanges();
 
+            string vouIDplus = _ctx.A9M.Where(w => w.VOU_ID.StartsWith("06")).Where(x => x.TRANS_TYPE == "ST_RS_RSO_O").Max(q => q.VOU_ID);
+            string vouSub = vouIDplus.Substring(2, vouIDplus.Length - 2);
+            int vouSubInt = 0;
+            if (int.TryParse(vouSub, out vouSubInt))
+            {
+                vouSubInt++;
+                vouIDplus = vouSubInt.ToString();
+                vouIDplus = vouIDplus.PadLeft(vouSub.Length, '0');
+                vouIDplus = vouIDplus.Insert(0, "06");
+            }
 
+            MemberInvoiceDTO memberInvoiceDTO = new MemberInvoiceDTO
+            {
+                apmaster = new ACC011AP
+                {
+                    DOC_ID = vouIDplus,
+                    DISTR_ID = newMember.DISTR_ID,
+                    S_SERIAL = newMember.DISTR_ID + vouIDplus,
+                    NET_TOTAL = 30,
+                    QUOT_ID = "",
+                    DOC_DATE = DateTime.UtcNow.ToString("yyy-MM-dd"),
+                    SM_ID = "00",
+                    SA_ID = "02",
+                    SL_LOC_ID = "02",
+                    DISC_RATIO = 0,
+                    DISC_VAL = 0,
+                    ADDED_TAX = 0,
+                    DED_TAX = 0,
+                    NET_AFTER_TAX = 0,
+                    LDELIVERY = "0000000000",
+                    // AREMARKS = "",
+                    // LREMARKS = "",
+                    IS_TEMPLATE = "0",
+                    CLOSEDFLAG = "0",
+                    ADD_TIME = DateTime.Now.ToString("HH:mm:ss"),
+                    ADD_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    LAST_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    SENT = "0",
+                    OWNER = null,
+                    MODULE_ID = "SA",
+                    HELD = "0",
+                    PRJ_ID = null,
+                    COMP_ID = "001",
+                    DS_SHIPMENT = "023000000000"
+
+                },
+                aqdetail = new ACC011AQ
+                {
+                    DOC_ID = vouIDplus,
+                    
+                    COUNTER = "0001",
+                    ITEM_ID = "99M",
+                    UNIT = "",
+                    QTY_REQ = 1,
+                    UNIT_PRICE = 30,
+                    TOT_PRICE = 30,
+                    ITEM_BP = 0,
+                    ITEM_BV = 0,
+                    //unit_price
+                    DISC_RATIO = 0,
+                    DISC_VAL = 0,
+                    NET_PRICE = 30,
+                   
+                    //net_price
+                    //tot_price
+                    SENT = "0",
+                    MODULE_ID = "SA",
+                    PACK_UNITS = 0,
+                    COMP_ID = "001",
+                    ADD_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    LAST_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    USER_ID = "006",
+                    LAST_USER = "006",
+                    ADD_TIME = DateTime.Now.ToString("HH:mm:ss"),
+                    S_SERIAL = vouIDplus + "99M" + "0001",
+                }
+                
+            };
+            _ctx.APM.Add(memberInvoiceDTO.apmaster);
+            _ctx.SaveChanges();
+            _ctx.AQD.Add(memberInvoiceDTO.aqdetail);
+            _ctx.SaveChanges();
 
             return Created(new Uri(Request.RequestUri + "/" + newMember.DISTR_ID), new { id = newMember.DISTR_ID });
 
