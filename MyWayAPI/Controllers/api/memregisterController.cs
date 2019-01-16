@@ -183,7 +183,8 @@ namespace MyWayAPI.Controllers.api
                     HELD = "0",
                     PRJ_ID = null,
                     COMP_ID = "001",
-                    DS_SHIPMENT = "023000000000"
+                    DS_SHIPMENT = "023000000000",
+                    AREMARKS = "عضوية جديدة"
 
                 },
                 aqdetail = new ACC011AQ
