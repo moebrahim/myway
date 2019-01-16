@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DistrRepSummary.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="distrRepSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="distr" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DistrRepSummaryStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DistrRepSummary" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DistrRepSum" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="distrRepSummary" ReturnType="Collection(DistrRepSummary.distrRepSummary_Result)">
+            <Parameter Name="distr" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="distrRepSummary_Result">
+          <Property Type="String" Name="distr_id" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="M_ANAME" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="per_bp" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PGROUP_BP" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TOTAL_BP" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="m_ratio" Nullable="true" Precision="19" />
+          <Property Type="String" Name="LEADER_ID_N" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="L_ANAME" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SPONSOR_ID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="S_ANAME" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="COUNT" Nullable="true" />
+          <Property Type="String" Name="AREA" Nullable="true" MaxLength="60" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DistrRepSummaryStoreContainer" CdmEntityContainer="DistrRepSum" >
+          <FunctionImportMapping FunctionImportName="distrRepSummary" FunctionName="DistrRepSummary.Store.distrRepSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DistrRepSummary.distrRepSummary_Result">
+                <ScalarProperty Name="distr_id" ColumnName="distr_id" />
+                <ScalarProperty Name="M_ANAME" ColumnName="M_ANAME" />
+                <ScalarProperty Name="per_bp" ColumnName="per_bp" />
+                <ScalarProperty Name="PGROUP_BP" ColumnName="PGROUP_BP" />
+                <ScalarProperty Name="TOTAL_BP" ColumnName="TOTAL_BP" />
+                <ScalarProperty Name="m_ratio" ColumnName="m_ratio" />
+                <ScalarProperty Name="LEADER_ID_N" ColumnName="LEADER_ID_N" />
+                <ScalarProperty Name="L_ANAME" ColumnName="L_ANAME" />
+                <ScalarProperty Name="SPONSOR_ID" ColumnName="SPONSOR_ID" />
+                <ScalarProperty Name="S_ANAME" ColumnName="S_ANAME" />
+                <ScalarProperty Name="COUNT" ColumnName="COUNT" />
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

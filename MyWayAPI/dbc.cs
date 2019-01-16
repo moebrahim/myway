@@ -26,10 +26,10 @@ namespace MyWayAPI
         public DbSet<ACC011AA> AAD { get; set; }
         public DbSet<ACC011A9> A9M { get; set; }
         public DbSet<liveStock> Stock { get; set; }
-        public DbSet<ACC011A3> Items { get; set; }
+        //public DbSet<ACC011A3> Items { get; set; }
         public DbSet<A000032C> Periods { get; set; }
         public DbSet<ACC011DSSC> Shipments { get; set; }
-
+        public DbSet<ACC011DSSP> ShipmentPlace { get; set; }
         public DbSet<PRODUCT> Products { get; set; }
     }
 }

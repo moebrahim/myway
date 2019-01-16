@@ -20,7 +20,7 @@ namespace MyWayAPI.Controllers.api
             //impliment later
             return Ok("OK!");
         }
-
+        [Route("api/invoice")]
         [HttpPut]
         //amr el bee3 8 fatoora 10
         //06
@@ -37,6 +37,16 @@ namespace MyWayAPI.Controllers.api
                 vouIDplus = vouSubInt.ToString();
                 vouIDplus = vouIDplus.PadLeft(vouSub.Length, '0');
                 vouIDplus = vouIDplus.Insert(0, "06");
+            }
+            //string shipment = _ctx.APM.Where(w => w.DS_SHIPMENT.StartsWith("020006")).Max(q => q.DS_SHIPMENT);
+            string shipment = _ctx.APM.Where(w => w.DS_SHIPMENT.StartsWith("020006")).Where(q => q.DOC_ID.StartsWith("06")).Max(q => q.DS_SHIPMENT);
+            shipment = shipment.Substring(shipment.Length - 6);
+            int intshipment = 0;
+            if(int.TryParse(shipment, out intshipment))
+            {
+                intshipment++;
+                shipment = intshipment.ToString();
+                shipment = shipment.PadLeft(6, '0');
             }
             #endregion
             //inv.a9master = new ACC011A9();
@@ -61,7 +71,7 @@ namespace MyWayAPI.Controllers.api
             inv.a9master.NO_MODIFY = "0";
             
             inv.a9master.SENT = "0";
-            inv.a9master.MODULE_ID = "sa";
+            inv.a9master.MODULE_ID = "SA";
             inv.a9master.USER_ID = inv.a9master.LAST_USER = "006";
             inv.a9master.COMP_ID = "001";
             inv.a9master.S_AUTO_KEY = 1;
@@ -69,6 +79,7 @@ namespace MyWayAPI.Controllers.api
             inv.a9master.ADD_TIME = DateTime.UtcNow.ToString("HH:mm:ss");//AddHours(1).ToString("HH:mm:ss");//+ DateTime.Parse("01:00:00");//DateTime.Now.ToString("HH:mm:ss");
             inv.a9master.S_SERIAL = "SA0053A2LIZQH00";
             inv.a9master.REC_OWNER = "U";
+            //inv.a9master.DS_SHIPMENT = "020006" + shipment;
             #endregion
 
             #region basic init 2
@@ -100,8 +111,8 @@ namespace MyWayAPI.Controllers.api
             inv.apmaster.DED_TAX = 0;
             inv.apmaster.NET_AFTER_TAX = 0;
             inv.apmaster.LDELIVERY = "0000000000";
-            inv.apmaster.AREMARKS = "";
-            inv.apmaster.LREMARKS = "";
+            //inv.apmaster.AREMARKS = "";
+            //inv.apmaster.LREMARKS = "";
             inv.apmaster.IS_TEMPLATE = "0";
             inv.apmaster.CLOSEDFLAG = "0";
             inv.apmaster.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
@@ -114,9 +125,10 @@ namespace MyWayAPI.Controllers.api
             inv.apmaster.COMP_ID = "001";
             inv.apmaster.USER_ID = inv.apmaster.LAST_USER = "006";
             inv.apmaster.S_AUTO_KEY = 0;
-            inv.apmaster.S_SERIAL = "SA0053A2LIZQH00";
-            inv.apmaster.DISC_NOTES = "";
-            inv.apmaster.DS_SHIPMENT = "60" + inv.a9master.CUS_VEN_ID;
+            inv.apmaster.S_SERIAL = inv.a9master.CUS_VEN_ID + inv.apmaster.DOC_ID;
+            //inv.apmaster.DISC_NOTES = "";
+            //inv.apmaster.DS_SHIPMENT = "60" + inv.a9master.CUS_VEN_ID;
+            //inv.apmaster.DS_SHIPMENT = inv.a9master.DS_SHIPMENT;
             #endregion
             #region //stuff to ask about and old code
             //inv.apmaster.DS_SHIPMENT_PLACE = ""; idk 
@@ -183,7 +195,7 @@ namespace MyWayAPI.Controllers.api
                 i.VOU_SIGN = 0;
                 i.V_DISTR_ID = "0000";
                 i.ST_LOC_ID = "";
-                i.VOU_SIGN = -1;
+                //i.VOU_SIGN = -1;
                 i.QTY2 = 0;
 
                 _ctx.AAD.Add(i);
@@ -227,7 +239,7 @@ namespace MyWayAPI.Controllers.api
                 aq.ADD_DATE = aq.ADD_TIME = DateTime.Now.ToString("yyy-MM-dd");
                 aq.USER_ID = aq.LAST_USER = "006";
                 aq.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
-                aq.S_SERIAL = "SA005672TMQP757";
+                aq.S_SERIAL = inv.apmaster.DOC_ID+ aq.ITEM_ID + aq.COUNTER;
                 //item_bp, item_bv, 
                 _ctx.AQD.Add(aq);
             }
@@ -236,8 +248,16 @@ namespace MyWayAPI.Controllers.api
             _ctx.A9M.Add(inv.a9master);
             _ctx.SaveChanges();
             //total price
-            return Created(new Uri(Request.RequestUri + "/" + inv.apmaster.DISTR_ID), new { id = inv.apmaster.DOC_ID, amt = inv.apmaster.NET_TOTAL });
+            return Created(new Uri(Request.RequestUri + "/" + inv.apmaster.DISTR_ID), new { id = inv.apmaster.DOC_ID, amt = inv.apmaster.NET_TOTAL/*, policy =inv.apmaster.DS_SHIPMENT */});
         }
-    
+        //to be implimented
+        //[Route("api/invoice/fees/{id}")]
+        //[HttpPut]
+        //public IHttpActionResult newMemberFees(string id)
+        //{
+        //    InvoiceDTO init = new InvoiceDTO();
+        //    init.
+        //    return Created();
+        //}
     }
 }

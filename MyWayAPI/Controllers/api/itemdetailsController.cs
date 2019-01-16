@@ -22,13 +22,13 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult getitemdetails(string itemID)
         {
 
-            return Ok(_ctx.Products.Select(w => new { w.ITEM_ID, w.ANAME, w.PRICE, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW }).Where(q => q.ITEM_ID == itemID));
+            return Ok(_ctx.Products.Select(w => new { w.ITEM_ID, w.ANAME, w.PRICE, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW, w.WEIGHT, w.WEIGHT_UNIT, w.ENABLED }).Where(q => q.ITEM_ID == itemID));
         }
         [Route("api/allitemdetails")]
         [HttpGet]
         public IHttpActionResult getallproducts()
         {
-            return Ok(_ctx.Products.Select(w => new { w.ITEM_ID, w.ANAME, w.PRICE, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW }));
+            return Ok(_ctx.Products.Select(w => new { w.ITEM_ID, w.ANAME, w.PRICE, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW, w.WEIGHT, w.WEIGHT_UNIT, w.ENABLED }));
         }
 
         [Route("api/newproducts")]
@@ -36,7 +36,7 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult getallnewproducts()
         {
 
-            return Ok(_ctx.Products.Select(w => new  { w.ITEM_ID, w.ANAME, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW}).Where(q=>q.NEW == true));
+            return Ok(_ctx.Products.Select(w => new  { w.ITEM_ID, w.ANAME, w.PROMO, w.BP, w.BV, w.CATALOG, w.DISCONTINUED, w.NEW, w.WEIGHT, w.WEIGHT_UNIT, w.ENABLED}).Where(q=>q.NEW == true));
         }
     }
 }

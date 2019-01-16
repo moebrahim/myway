@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using MyWayAPI.Models;
+
 
 namespace MyWayAPI.Controllers.api
 {
@@ -26,6 +26,15 @@ namespace MyWayAPI.Controllers.api
 
             return Ok(x);
          }
+
+        [Route("api/distrrepsummary/{distrID}")]
+        [HttpGet]
+        public IHttpActionResult distrRep(string distrID)
+        {
+            var x = new DistrRepSum();
+            var res = x.distrRepSummary(distrID);
+            return Ok(res);
+        }
         
     }
 }

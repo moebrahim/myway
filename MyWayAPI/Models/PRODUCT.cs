@@ -21,6 +21,11 @@ namespace MyWayAPI.Models
 
         public double? BV { get; set; }
 
+        public double? WEIGHT { get; set; }
+
+        [StringLength(10)]
+        public string WEIGHT_UNIT { get; set; }
+
         [StringLength(50)]
         public string PROMO { get; set; }
 
@@ -29,5 +34,7 @@ namespace MyWayAPI.Models
         public bool? DISCONTINUED { get; set; }
 
         public bool? NEW { get; set; }
+
+        public bool? ENABLED { get; set; }
     }
 }
