@@ -55,7 +55,7 @@ namespace MyWayAPI.Controllers.api
             inv.a9master.TRANS_TYPE = "ST_RS_RSO_O";
             inv.a9master.VOU_DATE = inv.a9master.ADD_DATE = inv.a9master.LAST_DATE = DateTime.Now.ToString("yyy-MM-dd");
             //adescr is ""
-            inv.a9master.ADESCR = "TEST";
+            inv.a9master.ADESCR = "";
             inv.a9master.LDESCR = "";
             inv.a9master.PRJ_ID = "00";
             //make sure it's 06
@@ -199,7 +199,7 @@ namespace MyWayAPI.Controllers.api
 
                 _ctx.AAD.Add(i);
                 //_ctx.SaveChanges();
-                //inv.aadetail.Add(detail);
+                //inv.asctail.Add(detail);
             }
             #endregion
             #region cleanup
