@@ -234,6 +234,21 @@
       <DependentUpon>distrSummary.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DSSP.cs" />
+    <Compile Include="Models\EditVou.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditVou.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EditVou.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditVou.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EditVou.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditVou.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\getmemberID.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -356,6 +371,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>distrRepSummary.edmx</DependentUpon>
       <LastGenOutput>distrRepSummary.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EditVou.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EditVou.edmx</DependentUpon>
+      <LastGenOutput>EditVou.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EditVou.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EditVou.edmx</DependentUpon>
+      <LastGenOutput>EditVou.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -503,6 +528,13 @@
     </EntityDeploy>
     <Content Include="Models\distrRepSummary.edmx.diagram">
       <DependentUpon>distrRepSummary.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\EditVou.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EditVou.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EditVou.edmx.diagram">
+      <DependentUpon>EditVou.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi - Web Deploy.pubxml" />

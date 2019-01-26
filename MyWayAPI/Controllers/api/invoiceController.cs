@@ -20,6 +20,25 @@ namespace MyWayAPI.Controllers.api
             //impliment later
             return Ok("OK!");
         }
+        [Route("api/editvou/{doc_id}/{distr_id}")]
+        [HttpPost]
+        public IHttpActionResult editVou (string doc_id,string distr_id)
+        {
+            var x = new CLOUD_COORDINATOREntities1();
+            var res = x.EditVou(doc_id, distr_id);
+            //x.
+            //Console.WriteLine(res);
+            //var xw = res;
+            //if (res == "DELETED")
+            //    return Ok("Docs are deleted");
+            //else
+            //    return Ok("Docs not found");
+            return Ok(res);
+        }
+
+
+
+
         [Route("api/invoice")]
         [HttpPut]
         //amr el bee3 8 fatoora 10
