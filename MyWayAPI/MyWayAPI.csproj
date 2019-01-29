@@ -172,6 +172,7 @@
     <Compile Include="Controllers\api\shipmentcompaniesController.cs" />
     <Compile Include="Controllers\api\stockController.cs" />
     <Compile Include="Controllers\api\treeController.cs" />
+    <Compile Include="Controllers\api\userProcsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="ConvertBase36\Base36.cs" />
@@ -303,6 +304,21 @@
     </Compile>
     <Compile Include="Models\LiveStock.cs" />
     <Compile Include="Models\MemberInvoiceDTO.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\NewTree.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -317,6 +333,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NewTree.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PENDINGMEMBER_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PendingStore.Context.cs">
       <AutoGen>True</AutoGen>
@@ -354,6 +373,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>treeSp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\userInvoices.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>userInvoices.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userInvoices.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>userInvoices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userInvoices.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>userInvoices.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERINVOICES_Result.cs">
+      <DependentUpon>userInvoices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userPending.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>userPending.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userPending.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>userPending.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\userPending.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>userPending.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERPENDING_Result.cs">
+      <DependentUpon>userPending.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -381,6 +436,36 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EditVou.edmx</DependentUpon>
       <LastGenOutput>EditVou.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\userInvoices.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>userInvoices.edmx</DependentUpon>
+      <LastGenOutput>userInvoices.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\userInvoices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>userInvoices.edmx</DependentUpon>
+      <LastGenOutput>userInvoices.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\userPending.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>userPending.edmx</DependentUpon>
+      <LastGenOutput>userPending.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\userPending.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>userPending.edmx</DependentUpon>
+      <LastGenOutput>userPending.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -535,6 +620,27 @@
     </EntityDeploy>
     <Content Include="Models\EditVou.edmx.diagram">
       <DependentUpon>EditVou.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\userPending.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>userPending.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\userPending.edmx.diagram">
+      <DependentUpon>userPending.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\userInvoices.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>userInvoices.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\userInvoices.edmx.diagram">
+      <DependentUpon>userInvoices.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi - Web Deploy.pubxml" />

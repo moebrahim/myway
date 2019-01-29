@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model4.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="USERPENDING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Model4StoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities7" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="USERPENDING" ReturnType="Collection(Model4.USERPENDING_Result)">
+            <Parameter Name="USER" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="USERPENDING_Result">
+          <Property Type="String" Name="DOC_ID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="DISTR_ID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DISTRNAME" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="COUNTER" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="ITEM_ID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ITEMNAME" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="QTY_REQ" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="UNIT_PRICE" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="TOT_PRICE" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Double" Name="ITEM_BP" Nullable="true" />
+          <Property Type="Double" Name="TOTAL_BP" Nullable="true" />
+          <Property Type="String" Name="DOC_DATE" Nullable="true" MaxLength="10" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Model4StoreContainer" CdmEntityContainer="Entities7" >
+          <FunctionImportMapping FunctionImportName="USERPENDING" FunctionName="Model4.Store.USERPENDING">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model4.USERPENDING_Result">
+                <ScalarProperty Name="DOC_ID" ColumnName="DOC_ID" />
+                <ScalarProperty Name="DISTR_ID" ColumnName="DISTR_ID" />
+                <ScalarProperty Name="DISTRNAME" ColumnName="DISTRNAME" />
+                <ScalarProperty Name="COUNTER" ColumnName="COUNTER" />
+                <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+                <ScalarProperty Name="QTY_REQ" ColumnName="QTY_REQ" />
+                <ScalarProperty Name="UNIT_PRICE" ColumnName="UNIT_PRICE" />
+                <ScalarProperty Name="TOT_PRICE" ColumnName="TOT_PRICE" />
+                <ScalarProperty Name="ITEM_BP" ColumnName="ITEM_BP" />
+                <ScalarProperty Name="TOTAL_BP" ColumnName="TOTAL_BP" />
+                <ScalarProperty Name="DOC_DATE" ColumnName="DOC_DATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

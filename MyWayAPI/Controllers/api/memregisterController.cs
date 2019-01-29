@@ -49,8 +49,9 @@ namespace MyWayAPI.Controllers.api
             return Ok(x);
 
         }
+        [Route("api/memregister/{leaderID}")]
         [HttpPut]
-        public IHttpActionResult newstuff(ACC011AZ1 newMember)
+        public IHttpActionResult newstuff(ACC011AZ1 newMember, string leaderID)
         {
             #region member
             //ACC011AZ1 mem = new ACC011AZ1();
@@ -167,7 +168,7 @@ namespace MyWayAPI.Controllers.api
             {
                 apmaster = new ACC011AP
                 {
-
+                    USER_ID = leaderID,
                     DOC_ID = vouIDplusApAq,
                     DISTR_ID = newMember.DISTR_ID,
                     S_SERIAL = newMember.DISTR_ID + vouIDplusApAq,
@@ -225,7 +226,7 @@ namespace MyWayAPI.Controllers.api
                     COMP_ID = "001",
                     ADD_DATE = DateTime.Now.ToString("yyy-MM-dd"),
                     LAST_DATE = DateTime.Now.ToString("yyy-MM-dd"),
-                    USER_ID = "006",
+                    USER_ID = leaderID,
                     LAST_USER = "006",
                     ADD_TIME = DateTime.Now.ToString("HH:mm:ss"),
                     S_SERIAL = vouIDplusApAq + "99m" + "0001",
@@ -258,6 +259,7 @@ namespace MyWayAPI.Controllers.api
 
                     SENT = "0",
                     MODULE_ID = "SA",
+                    USER_ID = leaderID,
                     // USER_ID =  LAST_USER = "006",
                     COMP_ID = "001",
                     S_AUTO_KEY = 1,
@@ -294,7 +296,7 @@ namespace MyWayAPI.Controllers.api
                     DLV_QTY = 0,
                     NEW_COST = 0,
                     COMP_ID = "001",
-                    USER_ID = "006",
+                    USER_ID = leaderID,
                     LAST_USER = "006",
                     QTY = 1,
                     S_AUTO_KEY = 0,
