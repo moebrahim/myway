@@ -304,6 +304,24 @@
     </Compile>
     <Compile Include="Models\LiveStock.cs" />
     <Compile Include="Models\MemberInvoiceDTO.cs" />
+    <Compile Include="Models\memberPromo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>memberPromo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\memberPromo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>memberPromo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\memberPromo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>memberPromo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MEMBERPROMO_Result.cs">
+      <DependentUpon>memberPromo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -436,6 +454,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EditVou.edmx</DependentUpon>
       <LastGenOutput>EditVou.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\memberPromo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>memberPromo.edmx</DependentUpon>
+      <LastGenOutput>memberPromo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\memberPromo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>memberPromo.edmx</DependentUpon>
+      <LastGenOutput>memberPromo.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -621,6 +649,13 @@
     <Content Include="Models\EditVou.edmx.diagram">
       <DependentUpon>EditVou.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <EntityDeploy Include="Models\userPending.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>userPending.Designer.cs</LastGenOutput>
@@ -628,19 +663,19 @@
     <Content Include="Models\userPending.edmx.diagram">
       <DependentUpon>userPending.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\memberPromo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>memberPromo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\memberPromo.edmx.diagram">
+      <DependentUpon>memberPromo.edmx</DependentUpon>
+    </Content>
     <EntityDeploy Include="Models\userInvoices.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>userInvoices.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\userInvoices.edmx.diagram">
       <DependentUpon>userInvoices.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi - Web Deploy.pubxml" />

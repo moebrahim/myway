@@ -14,16 +14,20 @@ namespace MyWayAPI.Models
     public partial class USERINVOICES_Result
     {
         public string DOC_ID { get; set; }
-        public string DISTR_ID { get; set; }
-        public string DISTRNAME { get; set; }
+        public string DISTR { get; set; }
+        public string DISTR_NAME { get; set; }
         public string COUNTER { get; set; }
-        public string ITEMNAME { get; set; }
-        public string ANAME { get; set; }
+        public string ITEM_ID { get; set; }
+        public string ITEM_NAME { get; set; }
         public Nullable<double> PRICE { get; set; }
         public Nullable<double> QTY { get; set; }
         public Nullable<double> NET_TOTAL { get; set; }
         public Nullable<double> ITEM_BP { get; set; }
         public Nullable<double> TOTAL_BP { get; set; }
         public string DOC_DATE { get; set; }
+        public string DS_SHIPMENT { get; set; }
+        public string SHIPMENT_STATUS { get; set; }
+        public string DLV_DATE { get; set; }
+        public string COMP_NAME { get; set; }
     }
 }

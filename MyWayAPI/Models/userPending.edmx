@@ -14,7 +14,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities7" annotation:LazyLoadingEnabled="true" >
+        <EntityContainer Name="Entities11" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="USERPENDING" ReturnType="Collection(Model4.USERPENDING_Result)">
             <Parameter Name="USER" Mode="In" Type="String" />
           </FunctionImport>
@@ -38,7 +38,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Model4StoreContainer" CdmEntityContainer="Entities7" >
+        <EntityContainerMapping StorageEntityContainer="Model4StoreContainer" CdmEntityContainer="Entities11" >
           <FunctionImportMapping FunctionImportName="USERPENDING" FunctionName="Model4.Store.USERPENDING">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model4.USERPENDING_Result">

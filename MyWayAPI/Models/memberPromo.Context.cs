@@ -15,10 +15,10 @@ namespace MyWayAPI.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities14 : DbContext
+    public partial class API_REPORTDBEntities1 : DbContext
     {
-        public Entities14()
-            : base("name=Entities14")
+        public API_REPORTDBEntities1()
+            : base("name=API_REPORTDBEntities1")
         {
         }
     
@@ -28,13 +28,13 @@ namespace MyWayAPI.Models
         }
     
     
-        public virtual ObjectResult<USERINVOICES_Result> USERINVOICES(string uSER)
+        public virtual ObjectResult<MEMBERPROMO_Result> MEMBERPROMO(string dISTR)
         {
-            var uSERParameter = uSER != null ?
-                new ObjectParameter("USER", uSER) :
-                new ObjectParameter("USER", typeof(string));
+            var dISTRParameter = dISTR != null ?
+                new ObjectParameter("DISTR", dISTR) :
+                new ObjectParameter("DISTR", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USERINVOICES_Result>("USERINVOICES", uSERParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MEMBERPROMO_Result>("MEMBERPROMO", dISTRParameter);
         }
     }
 }

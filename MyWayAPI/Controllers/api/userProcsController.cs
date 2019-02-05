@@ -16,7 +16,7 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult userpending(string userID)
         {
             List<USERPENDING_Result> userPendingRes = new List<USERPENDING_Result>();
-            var test = new Entities7();
+            var test = new Entities11();
             var reslist = test.USERPENDING(userID).ToList();
             foreach (var pen in reslist.ToList())
             {
@@ -45,28 +45,57 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult userInvoices(string userID)
         {
             List<USERINVOICES_Result> invres = new List<USERINVOICES_Result>();
-            var con = new Entities8();
-            var res = con.USERINVOICES(userID).ToList();
-            foreach (var inv in res.ToList())
+            var con = new Entities14();
+            var res = con.USERINVOICES(userID);
+            foreach(var inv in res.ToList())
             {
-                invres.Add( new USERINVOICES_Result
+                invres.Add(new USERINVOICES_Result
                 {
                     DOC_ID = inv.DOC_ID,
-                    DISTR_ID = inv.DISTR_ID,
-                    DISTRNAME = inv.DISTRNAME,
+                    DISTR = inv.DISTR,
+                    DISTR_NAME = inv.DISTR_NAME,
                     COUNTER = inv.COUNTER,
-                    ITEMNAME = inv.ITEMNAME,
-                    ANAME = inv.ANAME,
+                    ITEM_ID = inv.ITEM_ID,
+                    ITEM_NAME = inv.ITEM_NAME,
                     PRICE = inv.PRICE,
                     QTY = inv.QTY,
-                    NET_TOTAL= inv.NET_TOTAL,
+                    NET_TOTAL = inv.NET_TOTAL,
                     ITEM_BP = inv.ITEM_BP,
                     TOTAL_BP = inv.TOTAL_BP,
-                    DOC_DATE = inv.DOC_DATE
-                });
+                    DOC_DATE = inv.DOC_DATE,
+                    DS_SHIPMENT = inv.DS_SHIPMENT,
+                    SHIPMENT_STATUS = inv.SHIPMENT_STATUS,
+                    DLV_DATE = inv.DLV_DATE,
+                    COMP_NAME = inv.COMP_NAME
 
+                });
             }
             return Ok(invres);
+            //List<USERINVOICES_Result> invres = new List<USERINVOICES_Result>();
+            //var con = new Entities13();
+            //var res = con.USERINVOICES(userID).ToList();
+            //foreach (var inv in res.ToList())
+            //{
+            //    invres.Add( new USERINVOICES_Result
+            //    {
+            //        DOC_ID = inv.DOC_ID,
+            //        DISTR_ID = inv.DISTR_ID,
+            //        DISTRNAME = inv.DISTRNAME,
+            //        COUNTER = inv.COUNTER,
+            //        ITEMNAME = inv.ITEMNAME,
+            //        ITEM_ID = inv.ITEM_ID,
+            //        PRICE = inv.PRICE,
+            //        QTY = inv.QTY,
+            //        NET_TOTAL= inv.NET_TOTAL,
+            //        ITEM_BP = inv.ITEM_BP,
+            //        TOTAL_BP = inv.TOTAL_BP,
+            //        DLV_DATE = inv.DLV_DATE,
+            //        SHIPMENT_STATUS = inv.SHIPMENT_STATUS,
+            //        DOC_DATE = inv.DOC_DATE
+            //    });
+
+            //}
+            //return Ok(invres);
         }
 
         [Route("api/pendingmember/{userID}")]
@@ -91,5 +120,25 @@ namespace MyWayAPI.Controllers.api
                 return Ok(invres);
         }
 
+        [Route("api/memberpromo/{distr_id}")]
+        [HttpGet]
+        public IHttpActionResult memberpromo(string distr_id)
+        {
+            List<MEMBERPROMO_Result> memp = new List<MEMBERPROMO_Result>();
+            var con = new API_REPORTDBEntities1();
+            var res = con.MEMBERPROMO(distr_id).ToList();
+            foreach(var x in res.ToList())
+            {
+                memp.Add(new MEMBERPROMO_Result
+                {
+                    DISTR_ID = x.DISTR_ID,
+                    BPA = x.BPA,
+                    BPB = x.BPB,
+                    BPC = x.BPC,
+                    JOINPERIOD = x.JOINPERIOD
+                });
+            }
+            return Ok(memp);
+        }
     }
 }
