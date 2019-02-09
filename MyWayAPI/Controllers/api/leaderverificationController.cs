@@ -31,9 +31,31 @@ namespace MyWayAPI.Controllers.api
         [HttpGet]
         public IHttpActionResult distrRep(string distrID)
         {
-            var x = new DistrRepSum();
-            var res = x.distrRepSummary(distrID);
-            return Ok(res);
+            List<distrRepSummary_Result> invres = new List<distrRepSummary_Result>();
+            var con = new API_REPORTDBEntities2();
+            var res = con.distrRepSummary(distrID);
+            foreach (var inv in res.ToList())
+            {
+                invres.Add(new distrRepSummary_Result
+                {
+                    distr_id = inv.distr_id,
+                    M_ANAME = inv.M_ANAME,
+                    per_bp = inv.per_bp,
+                    PGROUP_BP = inv.PGROUP_BP,
+                    TOTAL_BP = inv.TOTAL_BP,
+                    m_ratio = inv.m_ratio,
+                    LEADER_ID_N = inv.LEADER_ID_N,
+                    L_ANAME = inv.L_ANAME,
+                    SPONSOR_ID = inv.SPONSOR_ID,
+                    S_ANAME = inv.S_ANAME,
+                    COUNT = inv.COUNT,
+                    AREA = inv.AREA,
+                    LASTUPDATE = inv.LASTUPDATE,
+                    NEXTUPDATE = inv.NEXTUPDATE
+                });
+
+            }
+            return Ok(invres);
         }
         
     }

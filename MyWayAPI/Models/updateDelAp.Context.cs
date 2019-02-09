@@ -15,10 +15,10 @@ namespace MyWayAPI.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class API_REPORTDBEntities2 : DbContext
+    public partial class Entities16 : DbContext
     {
-        public API_REPORTDBEntities2()
-            : base("name=API_REPORTDBEntities2")
+        public Entities16()
+            : base("name=Entities16")
         {
         }
     
@@ -28,13 +28,17 @@ namespace MyWayAPI.Models
         }
     
     
-        public virtual ObjectResult<distrRepSummary_Result> distrRepSummary(string distr)
+        public virtual int UPDATE_DEL_AP(string dOCID, string dISTRID)
         {
-            var distrParameter = distr != null ?
-                new ObjectParameter("distr", distr) :
-                new ObjectParameter("distr", typeof(string));
+            var dOCIDParameter = dOCID != null ?
+                new ObjectParameter("DOCID", dOCID) :
+                new ObjectParameter("DOCID", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<distrRepSummary_Result>("distrRepSummary", distrParameter);
+            var dISTRIDParameter = dISTRID != null ?
+                new ObjectParameter("DISTRID", dISTRID) :
+                new ObjectParameter("DISTRID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_DEL_AP", dOCIDParameter, dISTRIDParameter);
         }
     }
 }

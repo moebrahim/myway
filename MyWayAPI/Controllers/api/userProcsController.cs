@@ -45,7 +45,7 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult userInvoices(string userID)
         {
             List<USERINVOICES_Result> invres = new List<USERINVOICES_Result>();
-            var con = new Entities14();
+            var con = new Entities15();
             var res = con.USERINVOICES(userID);
             foreach(var inv in res.ToList())
             {

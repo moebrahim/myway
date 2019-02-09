@@ -14,7 +14,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model5" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities14" annotation:LazyLoadingEnabled="true" >
+        <EntityContainer Name="Entities15" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="USERINVOICES" ReturnType="Collection(Model5.USERINVOICES_Result)">
             <Parameter Name="USER" Mode="In" Type="String" />
           </FunctionImport>
@@ -42,7 +42,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Model5StoreContainer" CdmEntityContainer="Entities14" >
+        <EntityContainerMapping StorageEntityContainer="Model5StoreContainer" CdmEntityContainer="Entities15" >
           <FunctionImportMapping FunctionImportName="USERINVOICES" FunctionName="Model5.Store.USERINVOICES">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model5.USERINVOICES_Result">

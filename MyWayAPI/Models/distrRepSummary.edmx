@@ -4,18 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DistrRepSummary.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="API_REPORTDBModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="distrRepSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="distr" Type="varchar" Mode="In" />
         </Function>
-        <EntityContainer Name="DistrRepSummaryStoreContainer" />
+        <EntityContainer Name="API_REPORTDBModel2StoreContainer" />
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DistrRepSummary" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DistrRepSum" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="distrRepSummary" ReturnType="Collection(DistrRepSummary.distrRepSummary_Result)">
+      <Schema Namespace="API_REPORTDBModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="API_REPORTDBEntities2" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="distrRepSummary" ReturnType="Collection(API_REPORTDBModel2.distrRepSummary_Result)">
             <Parameter Name="distr" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
@@ -32,16 +32,18 @@
           <Property Type="String" Name="S_ANAME" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="COUNT" Nullable="true" />
           <Property Type="String" Name="AREA" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="LASTUPDATE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NEXTUPDATE" Nullable="true" MaxLength="10" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DistrRepSummaryStoreContainer" CdmEntityContainer="DistrRepSum" >
-          <FunctionImportMapping FunctionImportName="distrRepSummary" FunctionName="DistrRepSummary.Store.distrRepSummary">
+        <EntityContainerMapping StorageEntityContainer="API_REPORTDBModel2StoreContainer" CdmEntityContainer="API_REPORTDBEntities2" >
+          <FunctionImportMapping FunctionImportName="distrRepSummary" FunctionName="API_REPORTDBModel2.Store.distrRepSummary">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DistrRepSummary.distrRepSummary_Result">
+              <ComplexTypeMapping TypeName="API_REPORTDBModel2.distrRepSummary_Result">
                 <ScalarProperty Name="distr_id" ColumnName="distr_id" />
                 <ScalarProperty Name="M_ANAME" ColumnName="M_ANAME" />
                 <ScalarProperty Name="per_bp" ColumnName="per_bp" />
@@ -54,6 +56,8 @@
                 <ScalarProperty Name="S_ANAME" ColumnName="S_ANAME" />
                 <ScalarProperty Name="COUNT" ColumnName="COUNT" />
                 <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="LASTUPDATE" ColumnName="LASTUPDATE" />
+                <ScalarProperty Name="NEXTUPDATE" ColumnName="NEXTUPDATE" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

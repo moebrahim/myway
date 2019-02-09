@@ -277,5 +277,14 @@ namespace MyWayAPI.Controllers.api
         //    init.
         //    return Created();
         //}
+        [Route("api/updatedelap/{doc_id}/{distr_id}")]
+        [HttpPost]
+        public IHttpActionResult updateDelAP(string doc_id, string distr_id)
+        {
+            var x = new Entities16();
+            var res = x.UPDATE_DEL_AP(doc_id, distr_id);
+
+            return Ok();
+        }
     }
 }

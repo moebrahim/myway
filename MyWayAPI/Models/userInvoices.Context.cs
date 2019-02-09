@@ -15,10 +15,10 @@ namespace MyWayAPI.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities14 : DbContext
+    public partial class Entities15 : DbContext
     {
-        public Entities14()
-            : base("name=Entities14")
+        public Entities15()
+            : base("name=Entities15")
         {
         }
     

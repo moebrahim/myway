@@ -391,6 +391,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>treeSp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\updateDelAp.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>updateDelAp.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\updateDelAp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>updateDelAp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\updateDelAp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>updateDelAp.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\userInvoices.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -474,6 +489,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\updateDelAp.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>updateDelAp.edmx</DependentUpon>
+      <LastGenOutput>updateDelAp.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\updateDelAp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>updateDelAp.edmx</DependentUpon>
+      <LastGenOutput>updateDelAp.cs</LastGenOutput>
     </Content>
     <Content Include="Models\userInvoices.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -635,13 +660,6 @@
       <DependentUpon>distrSummary.edmx</DependentUpon>
       <LastGenOutput>distrSummary.cs</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Models\distrRepSummary.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>distrRepSummary.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\distrRepSummary.edmx.diagram">
-      <DependentUpon>distrRepSummary.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\EditVou.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EditVou.Designer.cs</LastGenOutput>
@@ -676,6 +694,20 @@
     </EntityDeploy>
     <Content Include="Models\userInvoices.edmx.diagram">
       <DependentUpon>userInvoices.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\distrRepSummary.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>distrRepSummary.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\distrRepSummary.edmx.diagram">
+      <DependentUpon>distrRepSummary.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\updateDelAp.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>updateDelAp.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\updateDelAp.edmx.diagram">
+      <DependentUpon>updateDelAp.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi - Web Deploy.pubxml" />

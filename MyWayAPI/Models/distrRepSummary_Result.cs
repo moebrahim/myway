@@ -25,5 +25,7 @@ namespace MyWayAPI.Models
         public string S_ANAME { get; set; }
         public Nullable<int> COUNT { get; set; }
         public string AREA { get; set; }
+        public string LASTUPDATE { get; set; }
+        public string NEXTUPDATE { get; set; }
     }
 }
