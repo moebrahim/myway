@@ -286,5 +286,15 @@ namespace MyWayAPI.Controllers.api
 
             return Ok();
         }
+
+        [Route("api/updatedoneinv/{doc_id}/{distr_id}")]
+        [HttpPost]
+        public IHttpActionResult updatedone (string doc_id, string distr_id)
+        {
+            var x = new Entities17();
+            var res = x.UPDATE_DONE_INV(doc_id, distr_id);
+
+            return Ok();
+        }
     }
 }

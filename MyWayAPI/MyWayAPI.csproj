@@ -406,6 +406,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>updateDelAp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\updateDoneInv.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>updateDoneInv.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\updateDoneInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>updateDoneInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\updateDoneInv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>updateDoneInv.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\userInvoices.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -499,6 +514,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>updateDelAp.edmx</DependentUpon>
       <LastGenOutput>updateDelAp.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\updateDoneInv.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>updateDoneInv.edmx</DependentUpon>
+      <LastGenOutput>updateDoneInv.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\updateDoneInv.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>updateDoneInv.edmx</DependentUpon>
+      <LastGenOutput>updateDoneInv.cs</LastGenOutput>
     </Content>
     <Content Include="Models\userInvoices.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -708,6 +733,13 @@
     </EntityDeploy>
     <Content Include="Models\updateDelAp.edmx.diagram">
       <DependentUpon>updateDelAp.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\updateDoneInv.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>updateDoneInv.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\updateDoneInv.edmx.diagram">
+      <DependentUpon>updateDoneInv.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi - Web Deploy.pubxml" />
