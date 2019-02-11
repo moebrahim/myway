@@ -25,5 +25,6 @@ namespace MyWayAPI.Models
         public Nullable<double> ITEM_BP { get; set; }
         public Nullable<double> TOTAL_BP { get; set; }
         public string DOC_DATE { get; set; }
+        public string ADD_TIME { get; set; }
     }
 }

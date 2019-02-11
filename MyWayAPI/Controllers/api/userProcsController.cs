@@ -16,7 +16,7 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult userpending(string userID)
         {
             List<USERPENDING_Result> userPendingRes = new List<USERPENDING_Result>();
-            var test = new Entities11();
+            var test = new Entities18();
             var reslist = test.USERPENDING(userID).ToList();
             foreach (var pen in reslist.ToList())
             {
@@ -34,6 +34,7 @@ namespace MyWayAPI.Controllers.api
                         TOT_PRICE = pen.TOT_PRICE,
                         ITEM_BP = pen.ITEM_BP,
                         TOTAL_BP = pen.TOTAL_BP,
+                        ADD_TIME = pen.ADD_TIME,
                         DOC_DATE = pen.DOC_DATE
                     });
             }

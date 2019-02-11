@@ -14,7 +14,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities11" annotation:LazyLoadingEnabled="true" >
+        <EntityContainer Name="Entities18" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="USERPENDING" ReturnType="Collection(Model4.USERPENDING_Result)">
             <Parameter Name="USER" Mode="In" Type="String" />
           </FunctionImport>
@@ -32,13 +32,14 @@
           <Property Type="Double" Name="ITEM_BP" Nullable="true" />
           <Property Type="Double" Name="TOTAL_BP" Nullable="true" />
           <Property Type="String" Name="DOC_DATE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ADD_TIME" Nullable="true" MaxLength="10" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Model4StoreContainer" CdmEntityContainer="Entities11" >
+        <EntityContainerMapping StorageEntityContainer="Model4StoreContainer" CdmEntityContainer="Entities18" >
           <FunctionImportMapping FunctionImportName="USERPENDING" FunctionName="Model4.Store.USERPENDING">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model4.USERPENDING_Result">
@@ -54,6 +55,7 @@
                 <ScalarProperty Name="ITEM_BP" ColumnName="ITEM_BP" />
                 <ScalarProperty Name="TOTAL_BP" ColumnName="TOTAL_BP" />
                 <ScalarProperty Name="DOC_DATE" ColumnName="DOC_DATE" />
+                <ScalarProperty Name="ADD_TIME" ColumnName="ADD_TIME" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

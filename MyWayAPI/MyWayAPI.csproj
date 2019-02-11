@@ -699,13 +699,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\userPending.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>userPending.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\userPending.edmx.diagram">
-      <DependentUpon>userPending.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\memberPromo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>memberPromo.Designer.cs</LastGenOutput>
@@ -740,6 +733,13 @@
     </EntityDeploy>
     <Content Include="Models\updateDoneInv.edmx.diagram">
       <DependentUpon>updateDoneInv.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\userPending.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>userPending.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\userPending.edmx.diagram">
+      <DependentUpon>userPending.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\mywayapi %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mywayapi - Web Deploy.pubxml" />

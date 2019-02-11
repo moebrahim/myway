@@ -266,7 +266,8 @@ namespace MyWayAPI.Controllers.api
             _ctx.A9M.Add(inv.a9master);
             _ctx.SaveChanges();
             //total price
-            return Created(new Uri(Request.RequestUri + "/" + inv.apmaster.DISTR_ID), new { id = inv.apmaster.DOC_ID, amt = inv.apmaster.NET_TOTAL/*, policy =inv.apmaster.DS_SHIPMENT */});
+            return Created(new Uri(Request.RequestUri + "/" + inv.apmaster.DISTR_ID), new { id = inv.apmaster.DOC_ID,
+                amt = inv.apmaster.NET_TOTAL, docDate = inv.apmaster.DOC_DATE, addTime = inv.apmaster.ADD_TIME});
         }
         //to be implimented
         //[Route("api/invoice/fees/{id}")]
