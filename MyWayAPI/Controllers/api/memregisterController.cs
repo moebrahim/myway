@@ -54,6 +54,10 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult newstuff(ACC011AZ1 newMember, string leaderID)
         {
             #region member
+            var utcDate = DateTime.UtcNow;
+            var morDateTime = utcDate.AddHours(1);
+            var morDate = morDateTime.ToString("yyy-MM-dd");
+            var morTime = morDateTime.ToString("HH:mm:ss");
             //ACC011AZ1 mem = new ACC011AZ1();
             //the "10" can be replaced by any starting value
             string maxIDplus = _ctx.Member.Where(w => w.DISTR_ID.StartsWith("06")).Max(q => q.DISTR_ID);
@@ -108,7 +112,7 @@ namespace MyWayAPI.Controllers.api
             newMember.SHIFT_ID = "012";
             //02
             newMember.SERVICE_CENTER = "06";
-            newMember.JOIN_DATE = DateTime.Now.ToString("yyy-MM-dd");
+            newMember.JOIN_DATE = morDate; //DateTime.Now.ToString("yyy-MM-dd");
             newMember.CURRENT_DISTR_TYPE_ID = "00";
             newMember.DIRECTOR_ID = "00000000";
             newMember.YEAR_DISTR_TYPE = "";
@@ -125,14 +129,14 @@ namespace MyWayAPI.Controllers.api
             newMember.ADD_DATE = newMember.LAST_DATE = newMember.JOIN_DATE;
             newMember.LAST_USER = newMember.USER_ID = "006";
             newMember.S_AUTO_KEY = 0;
-            newMember.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
+            newMember.ADD_TIME = morTime;//DateTime.Now.ToString("HH:mm:ss");
             //s_serial empty string
             newMember.S_SERIAL = "TEST";
             newMember.REG_FEES = 30;
             newMember.PAID_FEES = 0;
             newMember.FEES_TYPE = "1";
             newMember.YEAR_STATUS = "999999999999";
-            newMember.LAST_RENEWAL_DATE = DateTime.Now.ToString("yyy-MM-dd");
+            newMember.LAST_RENEWAL_DATE = morDate;//DateTime.Now.ToString("yyy-MM-dd");
 
             var dupe = _ctx.Member.Select(w => w.DISTR_IDENT).ToList();
 
@@ -174,7 +178,7 @@ namespace MyWayAPI.Controllers.api
                     S_SERIAL = newMember.DISTR_ID + vouIDplusApAq,
                     NET_TOTAL = 30,
                     QUOT_ID = vouIDplus,
-                    DOC_DATE = DateTime.UtcNow.ToString("yyy-MM-dd"),
+                    DOC_DATE = morDate,//DateTime.UtcNow.ToString("yyy-MM-dd"),
                     SM_ID = "00",
                     SA_ID = "02",
                     SL_LOC_ID = "02",
@@ -188,9 +192,9 @@ namespace MyWayAPI.Controllers.api
                     // LREMARKS = "",
                     IS_TEMPLATE = "0",
                     CLOSEDFLAG = "0",
-                    ADD_TIME = DateTime.Now.ToString("HH:mm:ss"),
-                    ADD_DATE = DateTime.Now.ToString("yyy-MM-dd"),
-                    LAST_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    ADD_TIME = morTime,//DateTime.Now.ToString("HH:mm:ss"),
+                    ADD_DATE = morDate,//DateTime.Now.ToString("yyy-MM-dd"),
+                    LAST_DATE = morDate,//DateTime.Now.ToString("yyy-MM-dd"),
                     SENT = "0",
                     OWNER = null,
                     MODULE_ID = "SA",
@@ -224,11 +228,11 @@ namespace MyWayAPI.Controllers.api
                     MODULE_ID = "SA",
                     PACK_UNITS = 0,
                     COMP_ID = "001",
-                    ADD_DATE = DateTime.Now.ToString("yyy-MM-dd"),
-                    LAST_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    ADD_DATE = morDate,//DateTime.Now.ToString("yyy-MM-dd"),
+                    LAST_DATE = morDate,//DateTime.Now.ToString("yyy-MM-dd"),
                     USER_ID = leaderID,
                     LAST_USER = "006",
-                    ADD_TIME = DateTime.Now.ToString("HH:mm:ss"),
+                    ADD_TIME = morTime,//DateTime.Now.ToString("HH:mm:ss"),
                     S_SERIAL = vouIDplusApAq + "99m" + "0001",
                 },
                 a9master = new ACC011A9
@@ -236,9 +240,9 @@ namespace MyWayAPI.Controllers.api
 
                     VOU_ID = vouIDplus,
                     TRANS_TYPE = "ST_RS_RSO_O",
-                    VOU_DATE = DateTime.Now.ToString("yyy-MM-dd"),
-                    ADD_DATE = DateTime.Now.ToString("yyy-MM-dd"),
-                    LAST_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    VOU_DATE =morDate,//DateTime.Now.ToString("yyy-MM-dd"),
+                    ADD_DATE =morDate,//DateTime.Now.ToString("yyy-MM-dd"),
+                    LAST_DATE = morDate,//DateTime.Now.ToString("yyy-MM-dd"),
                     CUS_VEN_ID = newMember.DISTR_ID,
 
                     //adescr is ""
@@ -264,7 +268,7 @@ namespace MyWayAPI.Controllers.api
                     COMP_ID = "001",
                     S_AUTO_KEY = 1,
                     V_DISTR_ID = "0000",
-                    ADD_TIME = DateTime.UtcNow.ToString("HH:mm:ss"),//AddHours(1).ToString("HH:mm:ss"),//+ DateTime.Parse("01:00:00"),//DateTime.Now.ToString("HH:mm:ss"),
+                    ADD_TIME =morTime,// DateTime.UtcNow.ToString("HH:mm:ss"),//AddHours(1).ToString("HH:mm:ss"),//+ DateTime.Parse("01:00:00"),//DateTime.Now.ToString("HH:mm:ss"),
                     S_SERIAL = "SA0053A2LIZQH00",
                     REC_OWNER = "U",
                     DS_SHIPMENT = "023000000000"
@@ -279,9 +283,9 @@ namespace MyWayAPI.Controllers.api
                     VOU_ID = vouIDplus,
                     ITEM_ID = "99m",
                     COUNTER = "0001",
-                    VOU_DATE = DateTime.Now.ToString("yyy-MM-dd"),
-                    ADD_DATE = DateTime.Now.ToString("yyy-MM-dd"),
-                    LAST_DATE = DateTime.Now.ToString("yyy-MM-dd"),
+                    VOU_DATE =morDate,//DateTime.Now.ToString("yyy-MM-dd"),
+                    ADD_DATE =morDate,//DateTime.Now.ToString("yyy-MM-dd"),
+                    LAST_DATE = morDate,//DateTime.Now.ToString("yyy-MM-dd"),
                     STORE_ID = "02",
                     BATCH_ID = "",
                     EXP_DATE = "",
@@ -300,7 +304,7 @@ namespace MyWayAPI.Controllers.api
                     LAST_USER = "006",
                     QTY = 1,
                     S_AUTO_KEY = 0,
-                    ADD_TIME = DateTime.Now.ToString("HH:mm:ss"),
+                    ADD_TIME = morTime,//DateTime.Now.ToString("HH:mm:ss"),
                     SENT = "0",
                     S_SERIAL = "SA005672TP83L19",
                     VOU_SIGN = 0,

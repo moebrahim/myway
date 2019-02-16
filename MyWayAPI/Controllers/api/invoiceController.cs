@@ -37,7 +37,16 @@ namespace MyWayAPI.Controllers.api
         }
 
 
-
+        [Route("api/datetimenow")]
+        [HttpGet]
+        public IHttpActionResult datenow()
+        {
+            var utcDate = DateTime.UtcNow;
+            var morDateTime = utcDate.AddHours(1);
+            //var morDate = morDateTime.ToString("yyy-MM-dd");
+            //var morTime = morDateTime.ToString("HH:mm:ss");
+            return Ok(morDateTime);
+        }
 
         [Route("api/invoice")]
         [HttpPut]
@@ -46,6 +55,10 @@ namespace MyWayAPI.Controllers.api
         public IHttpActionResult NewOrder (InvoiceDTO inv)
         {
             #region basic init
+            var utcDate = DateTime.UtcNow;
+            var morDateTime = utcDate.AddHours(1);
+            var morDate = morDateTime.ToString("yyy-MM-dd");
+            var morTime = morDateTime.ToString("HH:mm:ss");
             //doing the acc011a9 first
             string vouIDplus = _ctx.A9M.Where(w => w.VOU_ID.StartsWith("06")).Where(x => x.TRANS_TYPE == "ST_RS_RSO_O").Max(q => q.VOU_ID);
             string vouSub = vouIDplus.Substring(2, vouIDplus.Length - 2);
@@ -72,7 +85,7 @@ namespace MyWayAPI.Controllers.api
             #region ACC011A9
             inv.a9master.VOU_ID = vouIDplus;
             inv.a9master.TRANS_TYPE = "ST_RS_RSO_O";
-            inv.a9master.VOU_DATE = inv.a9master.ADD_DATE = inv.a9master.LAST_DATE = DateTime.Now.ToString("yyy-MM-dd");
+            inv.a9master.VOU_DATE = inv.a9master.ADD_DATE = inv.a9master.LAST_DATE = morDate;//DateTime.Now.ToString("yyy-MM-dd");
             //adescr is ""
             inv.a9master.ADESCR = "";
             inv.a9master.LDESCR = "";
@@ -95,7 +108,7 @@ namespace MyWayAPI.Controllers.api
             inv.a9master.COMP_ID = "001";
             inv.a9master.S_AUTO_KEY = 1;
             inv.a9master.V_DISTR_ID = "0000";
-            inv.a9master.ADD_TIME = DateTime.UtcNow.ToString("HH:mm:ss");//AddHours(1).ToString("HH:mm:ss");//+ DateTime.Parse("01:00:00");//DateTime.Now.ToString("HH:mm:ss");
+            inv.a9master.ADD_TIME = morTime;//DateTime.UtcNow.ToString("HH:mm:ss");//AddHours(1).ToString("HH:mm:ss");//+ DateTime.Parse("01:00:00");//DateTime.Now.ToString("HH:mm:ss");
             inv.a9master.S_SERIAL = "SA0053A2LIZQH00";
             inv.a9master.REC_OWNER = "U";
             //inv.a9master.DS_SHIPMENT = "020006" + shipment;
@@ -120,7 +133,7 @@ namespace MyWayAPI.Controllers.api
             inv.apmaster.DOC_ID = vouIDplus;
             inv.apmaster.QUOT_ID = inv.a9master.VOU_ID;
             inv.apmaster.DISTR_ID = inv.a9master.CUS_VEN_ID;
-            inv.apmaster.DOC_DATE = DateTime.UtcNow.ToString("yyy-MM-dd");
+            inv.apmaster.DOC_DATE = morDate;//DateTime.UtcNow.ToString("yyy-MM-dd");
             inv.apmaster.SM_ID = "00";
             inv.apmaster.SA_ID = "02";
             inv.apmaster.SL_LOC_ID = "02";
@@ -134,8 +147,8 @@ namespace MyWayAPI.Controllers.api
             //inv.apmaster.LREMARKS = "";
             inv.apmaster.IS_TEMPLATE = "0";
             inv.apmaster.CLOSEDFLAG = "0";
-            inv.apmaster.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
-            inv.apmaster.ADD_DATE = inv.apmaster.LAST_DATE = DateTime.Now.ToString("yyy-MM-dd");
+            inv.apmaster.ADD_TIME = morTime; DateTime.Now.ToString("HH:mm:ss");
+            inv.apmaster.ADD_DATE = inv.apmaster.LAST_DATE = morDate; //DateTime.Now.ToString("yyy-MM-dd");
             inv.apmaster.SENT = "0";
             inv.apmaster.OWNER = null;
             inv.apmaster.MODULE_ID = "SA";
@@ -190,7 +203,7 @@ namespace MyWayAPI.Controllers.api
                 i.VOU_ID = inv.a9master.VOU_ID;
                 row++;
                 i.COUNTER = row.ToString().PadLeft(4,'0');
-                i.VOU_DATE = i.ADD_DATE = i.LAST_DATE = DateTime.Now.ToString("yyy-MM-dd");
+                i.VOU_DATE = i.ADD_DATE = i.LAST_DATE = morDate;// DateTime.Now.ToString("yyy-MM-dd");
                 i.STORE_ID = "02";
                 i.BATCH_ID = "";
                 i.EXP_DATE = "";
@@ -207,7 +220,7 @@ namespace MyWayAPI.Controllers.api
                 i.COMP_ID = "001";
                 i.USER_ID = i.LAST_USER= inv.apmaster.USER_ID;
                 i.S_AUTO_KEY = 0;
-                i.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
+                i.ADD_TIME = morTime; // DateTime.Now.ToString("HH:mm:ss");
                 i.SENT = "0";
                 i.S_SERIAL = "SA005672TP83L19";
                 i.VOU_SIGN = 0;
@@ -254,9 +267,9 @@ namespace MyWayAPI.Controllers.api
                 aq.MODULE_ID = "SA";
                 aq.PACK_UNITS = 0;
                 aq.COMP_ID = "001";
-                aq.ADD_DATE = aq.ADD_TIME = DateTime.Now.ToString("yyy-MM-dd");
+                aq.ADD_DATE = aq.LAST_DATE = morDate;//DateTime.Now.ToString("yyy-MM-dd");
                 aq.USER_ID = aq.LAST_USER = inv.apmaster.LAST_USER;
-                aq.ADD_TIME = DateTime.Now.ToString("HH:mm:ss");
+                aq.ADD_TIME = morTime; // DateTime.Now.ToString("HH:mm:ss");
                 aq.S_SERIAL = inv.apmaster.DOC_ID+ aq.ITEM_ID + aq.COUNTER;
                 //item_bp, item_bv, 
                 _ctx.AQD.Add(aq);
