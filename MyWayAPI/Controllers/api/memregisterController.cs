@@ -137,7 +137,7 @@ namespace MyWayAPI.Controllers.api
             newMember.FEES_TYPE = "1";
             newMember.YEAR_STATUS = "999999999999";
             newMember.LAST_RENEWAL_DATE = morDate;//DateTime.Now.ToString("yyy-MM-dd");
-
+            newMember.FAX = "";
             var dupe = _ctx.Member.Select(w => w.DISTR_IDENT).ToList();
 
             if (dupe.Contains(newMember.DISTR_IDENT))

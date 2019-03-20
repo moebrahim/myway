@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="API_REPORTDBModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="DISTR_RATIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="distr" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NEW_MEMBERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="distr" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="API_REPORTDBModel3StoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="API_REPORTDBModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="API_REPORTDBEntities3" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="DISTR_RATIO" ReturnType="Collection(API_REPORTDBModel3.DISTR_RATIO_Result)">
+            <Parameter Name="distr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NEW_MEMBERS" ReturnType="Collection(API_REPORTDBModel3.NEW_MEMBERS_Result)">
+            <Parameter Name="distr" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="DISTR_RATIO_Result">
+          <Property Type="String" Name="distr_id" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="distr_name" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="M_RATIO" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="COUNT21" Nullable="true" />
+          <Property Type="Decimal" Name="per_bp" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PGROUP_BP" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TOTAL_BP" Nullable="true" Precision="19" />
+          <Property Type="String" Name="area_name" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TELEPHONE" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="NEW_MEMBERS_Result">
+          <Property Type="String" Name="distr_id" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="distr_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="JOIN_DATE" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="per_bp" Nullable="true" Precision="19" />
+          <Property Type="String" Name="area_name" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TELEPHONE" Nullable="true" MaxLength="15" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="API_REPORTDBModel3StoreContainer" CdmEntityContainer="API_REPORTDBEntities3" >
+          <FunctionImportMapping FunctionImportName="DISTR_RATIO" FunctionName="API_REPORTDBModel3.Store.DISTR_RATIO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="API_REPORTDBModel3.DISTR_RATIO_Result">
+                <ScalarProperty Name="distr_id" ColumnName="distr_id" />
+                <ScalarProperty Name="distr_name" ColumnName="distr_name" />
+                <ScalarProperty Name="M_RATIO" ColumnName="M_RATIO" />
+                <ScalarProperty Name="COUNT21" ColumnName="COUNT21" />
+                <ScalarProperty Name="per_bp" ColumnName="per_bp" />
+                <ScalarProperty Name="PGROUP_BP" ColumnName="PGROUP_BP" />
+                <ScalarProperty Name="TOTAL_BP" ColumnName="TOTAL_BP" />
+                <ScalarProperty Name="area_name" ColumnName="area_name" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NEW_MEMBERS" FunctionName="API_REPORTDBModel3.Store.NEW_MEMBERS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="API_REPORTDBModel3.NEW_MEMBERS_Result">
+                <ScalarProperty Name="distr_id" ColumnName="distr_id" />
+                <ScalarProperty Name="distr_name" ColumnName="distr_name" />
+                <ScalarProperty Name="JOIN_DATE" ColumnName="JOIN_DATE" />
+                <ScalarProperty Name="per_bp" ColumnName="per_bp" />
+                <ScalarProperty Name="area_name" ColumnName="area_name" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
