@@ -74,7 +74,7 @@ namespace MyWayAPI.Controllers.api
             return Ok(invres);
             //List<USERINVOICES_Result> invres = new List<USERINVOICES_Result>();
             //var con = new Entities13();
-            //var res = con.USERINVOICES(userID).ToList();
+            //var res = con.USERINVOICES(userID).ToL
             //foreach (var inv in res.ToList())
             //{
             //    invres.Add( new USERINVOICES_Result
